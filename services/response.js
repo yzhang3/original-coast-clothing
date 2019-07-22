@@ -133,15 +133,19 @@ module.exports = class Response {
 
     let guide = this.genText(i18n.__("get_started.guidance"));
 
-    let curation = this.genQuickReply(i18n.__("get_started.help"), [
-      {
-        title: i18n.__("menu.suggestion"),
-        payload: "CURATION"
-      },
-      {
-        title: i18n.__("menu.help"),
-        payload: "CARE_HELP"
-      }
+    let curation = this.genButtonTemplate(i18n.__("get_started.help"), [
+      Response.genPostbackButton(
+        i18n.__("order.order_tracking"),
+        "TRACK_ORDER"
+      ),
+      Response.genPostbackButton(
+        i18n.__("curation.show"),
+        "CURATION_OTHER_STYLE"
+      ),
+      Response.genPostbackButton(
+        i18n.__("curation.show"),
+        "CURATION_OTHER_STYLE"
+      ),
     ]);
 
     return [welcome, guide, curation];

@@ -177,11 +177,7 @@ module.exports = class Receive {
     let response;
 
     // Set the response based on the payload
-    if (
-      payload === "GET_STARTED" ||
-      payload === "DEVDOCS" ||
-      payload === "GITHUB"
-    ) {
+    if (payload === "GET_STARTED") {
       response = Response.genNuxMessage(this.user);
     } else if (payload.includes("CURATION") || payload.includes("COUPON")) {
       let curation = new Curation(this.user, this.webhookEvent);

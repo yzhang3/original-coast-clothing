@@ -62,6 +62,25 @@ module.exports = class Curation {
         ];
         break;
 
+      case "COUPON_BUTTON":
+          response = [
+            Response.genText(i18n.__("leadgen.coupon")),
+            Response.genButtonTemplate(
+              i18n.__("curation.subtitle"),
+              [
+                Response.genPostbackButton(
+                  i18n.__("curation.show"),
+                  "CURATION_OTHER_STYLE"
+                ),
+                Response.genPostbackButton(
+                  i18n.__("curation.sales"),
+                  "CARE_SALES"
+                )
+              ]
+            )
+          ];
+          break;
+
       case "COUPON_50":
         outfit = `${this.user.gender}-${this.randomOutfit()}`;
 

@@ -21,42 +21,92 @@ module.exports = class Order {
 
     switch (payload) {
       case "TRACK_ORDER":
-        response = Response.genQuickReply(i18n.__("order.prompt"), [
-          {
-            title: i18n.__("order.account"),
-            payload: "LINK_ORDER"
-          },
-          {
-            title: i18n.__("order.search"),
-            payload: "SEARCH_ORDER"
-          },
-          {
-            title: i18n.__("menu.help"),
-            payload: "CARE_ORDER"
-          }
+        response = Response.genButtonTemplate(i18n.__("order.prompt"), [
+          Response.genPostbackButton(
+            i18n.__("order.how_to_order"),
+            "HOW_TO_ORDER"
+          ),
+          Response.genPostbackButton(
+            i18n.__("order.cancel_order"),
+            "CANCEL_ORDER"
+          ),
+          Response.genPostbackButton(
+            i18n.__("order.edit_order"),
+            "EDIT_ORDER"
+          ),
+          Response.genPostbackButton(
+            i18n.__("order.order_track"),
+            "ORDER_TRACK"
+          )
         ]);
         break;
 
-      case "SEARCH_ORDER":
-        response = Response.genText(i18n.__("order.number"));
-        break;
+      case "HOW_TO_ORDER":
+          response = Response.genButtonTemplate(i18n.__("order.prompt"), [
+            {
+              title: i18n.__("how_to_order.hto1"),
+              payload: "HOW_TO_ORDER_1"
+            },
+            {
+              title: i18n.__("how_to_order.hto2"),
+              payload: "HOW_TO_ORDER_2"
+            },
+            {
+              title: i18n.__("how_to_order.hto3"),
+              payload: "HOW_TO_ORDER_3"
+            }
+          ]);
+          break;
 
-      case "ORDER_NUMBER":
-        response = Response.genImageTemplate(
-          `${config.appUrl}/order.png`,
-          i18n.__("order.status")
+      case "CANCEL_ORDER":
+        response = Response.genText(
+          i18n.__("cancel_order.co1")
         );
         break;
 
-      case "LINK_ORDER":
-        response = [
-          Response.genText(i18n.__("order.dialog")),
-          Response.genText(i18n.__("order.searching")),
-          Response.genImageTemplate(
-            `${config.appUrl}/order.png`,
-            i18n.__("order.status")
-          )
-        ];
+      case "EDIT_ORDER":
+        response = Response.genButtonTemplate(i18n.__("order.prompt"), [
+          {
+            title: i18n.__("edit_order.eo1"),
+            payload: "EDIT_ORDER_1"
+          },
+          {
+            title: i18n.__("edit_order.eo2"),
+            payload: "EDIT_ORDER_2"
+          },
+          {
+            title: i18n.__("edit_order.eo3"),
+            payload: "EDIT_ORDER_3"
+          },
+          {
+            title: i18n.__("edit_order.eo4"),
+            payload: "EDIT_ORDER_4"
+          }
+        ]);
+        break;
+      case "ORDER_TRACK":
+        response = Response.genButtonTemplate(i18n.__("order.prompt"), [
+          {
+            title: i18n.__("order_track.ot1"),
+            payload: "ORDER_TRACK_1"
+          },
+          {
+            title: i18n.__("order_track.ot2"),
+            payload: "ORDER_TRACK_2"
+          },
+          {
+            title: i18n.__("order_track.ot3"),
+            payload: "ORDER_TRACK_3"
+          },
+          {
+            title: i18n.__("order_track.ot4"),
+            payload: "ORDER_TRACK_4"
+          },
+          {
+            title: i18n.__("order_track.ot5"),
+            payload: "ORDER_TRACK_5"
+          }
+        ]);
         break;
     }
 

@@ -156,6 +156,12 @@ app.get("/profile", (req, res) => {
           `<p>Set app ${config.appId} call to ${config.webhookUrl}</p>`
         );
       }
+      if (mode == "menu" || mode == "all") {
+        Profile.setPersistentMenu();
+        res.write(
+          `<p>Set app ${config.appId} Menu</p>`
+        );
+      }
       if (mode == "profile" || mode == "all") {
         Profile.setThread();
         res.write(`<p>Set Messenger Profile of Page ${config.pageId}</p>`);

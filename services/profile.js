@@ -148,23 +148,13 @@ module.exports = class Profile {
       composer_input_disabled: false,
       call_to_actions: [
         {
-          title: i18n.__("menu.support"),
-          type: "nested",
-          call_to_actions: [
-            {
-              title: i18n.__("menu.order"),
-              type: "postback",
-              payload: "TRACK_ORDER"
-            },
-            {
-              title: i18n.__("menu.help"),
-              type: "postback",
-              payload: "CARE_HELP"
-            }
-          ]
+          title: i18n.__("menu.promotions"),
+          type: "web_url",
+          url: config.shopUrl,
+          webview_height_ratio: "full"
         },
         {
-          title: i18n.__("menu.suggestion"),
+          title: i18n.__("menu.order_status"),
           type: "postback",
           payload: "CURATION"
         },
